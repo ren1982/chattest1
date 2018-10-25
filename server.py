@@ -18,13 +18,13 @@ def index():
   lon = str(data['conversation']['memory']['location']['lng'])
 
   # FETCH WEATHER
-  r = requests.get("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&APPID=6d3b7bcb7cc48d14f6d12d2633075a69")
+  r = requests.get("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&units=metric&APPID=6d3b7bcb7cc48d14f6d12d2633075a69")
 
   return jsonify(
     status=200,
     replies=[{
       'type': 'text',
-      'content': 'The weather in %s is %s.' % (loc, r.json()['weather'][0]['main'])
+      'content': 'The weather in %s is %s. The current temperature is %f.' % (loc, r.json()['weather'][0]['description'], r.json()['main']['temp'])
     }]
   )
 
