@@ -14,8 +14,8 @@ def index():
 
   # FETCH THE LOCATION, LATITUDE AND LONGITUDE
   loc = data['conversation']['memory']['location']['formatted']
-  lat = data['conversation']['memory']['location']['lat']
-  lon = data['conversation']['memory']['location']['lng']
+  lat = str(data['conversation']['memory']['location']['lat'])
+  lon = str(data['conversation']['memory']['location']['lng'])
 
   # FETCH WEATHER
   r = requests.get("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&APPID=6d3b7bcb7cc48d14f6d12d2633075a69")
